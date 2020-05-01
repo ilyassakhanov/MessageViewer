@@ -6,7 +6,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 
-public class getMessages {
+public class MessageGetter {
     ArrayList getAll(String directory) throws IOException {
 
         BufferedReader in = new BufferedReader(new FileReader(directory));
