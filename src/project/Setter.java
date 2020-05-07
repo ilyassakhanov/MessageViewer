@@ -18,4 +18,10 @@ public class Setter extends RegexMatcher {
         message.setNick(nickname);
         return message;
     }
+    Message putMain (Message message, String data){
+        message = putTime(message, data);
+        message = putNick(message, data);
+        message = putText(message, data);
+        return message;
+    }
 }
