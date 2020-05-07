@@ -2,7 +2,7 @@ package project;
 
 public class Setter extends RegexMatcher {
     Message putTime(Message message, String data) {
-        String time = getInfo(data, ":\\d{2}:\\d{2}\\d{2}");
+        String time = getInfo(data, "\\d{2}:\\d{2}:\\d{2}");
         message.setTime(time);
         return message;
     }
