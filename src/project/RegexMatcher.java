@@ -1,10 +1,10 @@
-package project ;
+package project;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 abstract class RegexMatcher {
-    String getInfo(String data, String regex) {
+    String getInfo(String data, String regex) throws Exception {
 
         Pattern checkRegex = Pattern.compile(regex);
         Matcher regexMatcher = checkRegex.matcher(data);
@@ -13,9 +13,10 @@ abstract class RegexMatcher {
                 return regexMatcher.group().trim();
             }
         }
-        return "The data was damaged";
+        throw new Exception();
     }
-    String getInfoGroup(String data, String regex){
+
+    String getInfoGroup(String data, String regex) throws Exception {
         Pattern checkRegex = Pattern.compile(regex);
         Matcher regexMatcher = checkRegex.matcher(data);
         while (regexMatcher.find()) {
@@ -23,6 +24,6 @@ abstract class RegexMatcher {
                 return regexMatcher.group(1);
             }
         }
-        return "The data was damaged";
+        throw new Exception();
     }
 }
