@@ -1,7 +1,7 @@
 package project;
 
 
-public abstract class Message {
+public class Message {
     String time;
     String nick;
     String text;
