@@ -1,15 +1,16 @@
 package project;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 
 
 public class MessageGetter {
-    ArrayList getAll(String directory) throws IOException {
+    ArrayList getAll(File file) throws IOException {
 
-        BufferedReader in = new BufferedReader(new FileReader(directory));
+        BufferedReader in = new BufferedReader(new FileReader(file));
 
 
         String str = "";
