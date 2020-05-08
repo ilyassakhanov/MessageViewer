@@ -29,6 +29,7 @@ public class Controller {
                 Alert alert = new Alert(Alert.AlertType.ERROR, "The file has incorrect format!", ButtonType.OK);
                 alert.show();
                 pathText.setText("");
+                mainTextArea.setText("");
             }
         }
         return null;
