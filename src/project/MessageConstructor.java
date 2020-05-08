@@ -15,7 +15,8 @@ public class MessageConstructor {
         messageFinal = messageFinal + ":" + messageConstr.getText();
         return messageFinal;
     }
-    String constructMain(Message messageConstr){
+
+    String constructMain(Message messageConstr) {
         String messageFinal = null;
         messageFinal = constructTime(messageConstr, messageFinal);
         messageFinal = constructName(messageConstr, messageFinal);
