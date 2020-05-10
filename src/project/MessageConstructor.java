@@ -7,7 +7,7 @@ public class MessageConstructor {
     }
 
     String constructName(Message msgConstr, String messageFinal) {
-        messageFinal = String.format(messageFinal + msgConstr.getNick());
+        messageFinal = messageFinal + msgConstr.getNick();
         return messageFinal;
     }
 

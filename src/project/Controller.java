@@ -22,9 +22,13 @@ public class Controller {
 
         if (selectedFile != null) {
             try {
-                ArrayList<Message> test = converter.setMessages(selectedFile.getAbsoluteFile());
+                ArrayList<Message> messagesObjcts = converter.setMessages(selectedFile.getAbsoluteFile());
                 pathText.setText(selectedFile.getAbsolutePath());
-                System.out.println(constructor.constructMain(test.get(0)));
+                String text = "";
+                for (int i = 0; i<messagesObjcts.size(); i++){
+                    text = text + constructor.constructMain(messagesObjcts.get(i)) + "\n";
+                }
+                mainTextArea.setText(text);
             } catch (Exception e) {
                 Alert alert = new Alert(Alert.AlertType.ERROR, "The file has incorrect format!", ButtonType.OK);
                 alert.show();
