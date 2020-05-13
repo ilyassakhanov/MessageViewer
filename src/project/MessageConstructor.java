@@ -12,7 +12,9 @@ public class MessageConstructor {
     }
 
     String constructText(Message messageConstr, String messageFinal) {
+        EmojiDecoder decoder = new EmojiDecoder();
         messageFinal = messageFinal + ":" + messageConstr.getText();
+        messageFinal = decoder.decodeEmojis(messageFinal);
         return messageFinal;
     }
 
