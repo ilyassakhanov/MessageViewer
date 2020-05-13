@@ -1,29 +1,31 @@
 package project;
 
+import javafx.scene.text.Text;
+import javafx.scene.text.TextFlow;
+
 public class MessageConstructor {
-    String constructTime(Message msgConstr, String messageFinal) {
-        messageFinal = String.format("[%s]", msgConstr.getTime());
-        return messageFinal;
+    TextFlow constructTime(Message msgConstr, TextFlow textFlow) {
+        textFlow.getChildren().add(new Text("[" + msgConstr.getTime() + "]"));
+        return textFlow;
     }
 
-    String constructName(Message msgConstr, String messageFinal) {
-        messageFinal = messageFinal + msgConstr.getNick();
-        return messageFinal;
+    TextFlow constructName(Message msgConstr, TextFlow textFlow) {
+        textFlow.getChildren().add(new Text(msgConstr.getNick() + ":"));
+        return textFlow;
     }
 
-    String constructText(Message messageConstr, String messageFinal) {
+    TextFlow constructText(Message msgConstr, TextFlow textFlow) {
         EmojiDecoder decoder = new EmojiDecoder();
-        messageFinal = messageFinal + ":" + messageConstr.getText();
-        messageFinal = decoder.decodeEmojis(messageFinal);
-        return messageFinal;
+        textFlow.getChildren().add(new Text(decoder.decodeEmojis(msgConstr.getText() + "\n")));
+        return textFlow;
     }
 
-    String constructMain(Message messageConstr) {
-        String messageFinal = null;
-        messageFinal = constructTime(messageConstr, messageFinal);
-        messageFinal = constructName(messageConstr, messageFinal);
-        messageFinal = constructText(messageConstr, messageFinal);
+    TextFlow constructMain(Message messageConstr, TextFlow textFlow) {
 
-        return messageFinal;
+        textFlow = constructTime(messageConstr, textFlow);
+        textFlow = constructName(messageConstr, textFlow);
+        textFlow = constructText(messageConstr, textFlow);
+
+        return textFlow;
     }
 }
