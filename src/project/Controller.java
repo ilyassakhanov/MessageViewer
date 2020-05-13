@@ -25,7 +25,7 @@ public class Controller {
                 ArrayList<Message> messagesObjcts = converter.setMessages(selectedFile.getAbsoluteFile());
                 pathText.setText(selectedFile.getAbsolutePath());
                 String text = "";
-                for (int i = 0; i<messagesObjcts.size(); i++){
+                for (int i = 0; i < messagesObjcts.size(); i++) {
                     text = text + constructor.constructMain(messagesObjcts.get(i)) + "\n";
                 }
                 mainTextArea.setText(text);
