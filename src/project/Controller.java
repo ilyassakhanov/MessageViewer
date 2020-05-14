@@ -29,7 +29,7 @@ public class Controller {
                 for (int i = 0; i < messagesObjcts.size(); i++) {
                     mainTextFlow =  constructor.constructMain(messagesObjcts.get(i), mainTextFlow);
                 }
-            } catch (Exception e) {
+            } catch (java.lang.Exception e) {
                 Alert alert = new Alert(Alert.AlertType.ERROR, "The file has incorrect format!", ButtonType.OK);
                 alert.show();
                 pathText.setText("");
