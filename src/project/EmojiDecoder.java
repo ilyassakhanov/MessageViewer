@@ -1,16 +1,42 @@
 package project;
 
-import java.nio.charset.Charset;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.text.Text;
+import javafx.scene.text.TextFlow;
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 
 public class EmojiDecoder {
-    byte[] LaughemojiBytes = new byte[]{(byte) 0xF0, (byte) 0x9F, (byte) 0x98, (byte) 0x82};
-    String LaughemojiAsString = new String(LaughemojiBytes, Charset.forName("UTF-8"));
-    byte[] SademojiBytes = new byte[]{(byte) 0xF0, (byte) 0x9F, (byte) 0x98, (byte) 0x82};
-    String SademojiAsString = new String(SademojiBytes, Charset.forName("UTF-8"));
+    String smilePath = new File("Resources/smile_happy.gif").getAbsolutePath();
+    FileInputStream inputstreamSmile = new FileInputStream(smilePath);
+    Image imageSmile = new Image(inputstreamSmile);
+    ImageView smile = new ImageView(imageSmile);
+    String sadPath = new File("Resources/smile_sad.gif").getAbsolutePath();
+    FileInputStream inputstreamSad = new FileInputStream(sadPath);
+    Image imageSad = new Image(inputstreamSad);
+    ImageView sad = new ImageView(imageSad);
 
-    String decodeEmojis(String msg) {
-        msg = msg.replace(":)", LaughemojiAsString);
-        msg = msg.replace(":(", SademojiAsString);
-        return msg;
+    public EmojiDecoder() throws FileNotFoundException {
+    }
+
+    TextFlow decodeEmojis(TextFlow textFlow, Message msg) {
+        for (int i = 0; i < msg.getText().length(); i++) {
+            if ((i + 1) < msg.getText().length()) {
+                if (((msg.getText().charAt(i) == ':') && (msg.getText().charAt(i + 1) == ')'))) {
+                    textFlow.getChildren().add(smile);
+                    i++;
+                    continue;
+                } else  if (((msg.getText().charAt(i) == ':') && (msg.getText().charAt(i + 1) == '('))){
+                    textFlow.getChildren().add(sad);
+                    i++;
+                    continue;
+                }
+            }
+            textFlow.getChildren().add(new Text((Character.toString(msg.getText().charAt(i)))));
+        }
+        return textFlow;
     }
 }
