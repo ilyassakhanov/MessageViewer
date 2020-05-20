@@ -1,6 +1,8 @@
 package project;
 
-
+/**
+ * A constructor that holds message data
+ * */
 public class Message {
     String time;
     String nick;

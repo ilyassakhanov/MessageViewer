@@ -2,8 +2,14 @@ package project;
 
 import java.io.File;
 import java.util.ArrayList;
-
+/**
+ * A class that deals with connecting FileChooser output and message processing classes
+ * */
 public class FileToArrayList {
+    /**
+     * @param file A file with messages
+     * @return ArrayList of Message constructors with set values
+     * */
     ArrayList setMessages(File file) throws Exception {
         String prevNick = "";
         ArrayList<Message> sortedMessages = new ArrayList<Message>();

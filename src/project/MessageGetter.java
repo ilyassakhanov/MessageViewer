@@ -6,8 +6,15 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 
-
+/**
+ * A constructor that is ment to deal with dividing a whole text file into separate object
+ */
 public class MessageGetter {
+    /**
+     * @param file  that has all the user messages
+     * @return ArrayList that that has the messages divided
+     * @throws IOException if file is not found
+     * */
     ArrayList getAll(File file) throws IOException {
 
         BufferedReader in = new BufferedReader(new FileReader(file));
@@ -31,7 +38,6 @@ public class MessageGetter {
                     str += "\n" + tmp;
                 }
             }
-
         }
         if (!str.isEmpty()) {
             allStrings.add(str);

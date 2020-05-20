@@ -2,7 +2,6 @@ package project;
 
 import javafx.event.ActionEvent;
 import javafx.scene.control.*;
-import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
 import javafx.stage.FileChooser;
@@ -15,7 +14,11 @@ public class Controller {
     public Text pathText;
     public TextFlow mainTextFlow;
 
-
+    /**
+     * A method that connects UI with message processing
+     * @param actionEvent launches on click of a select file button
+     * @return null, the outcome of this method is in the GUI
+     */
     public File onSelectFile(ActionEvent actionEvent) {
         FileChooser fc = new FileChooser();
         FileToArrayList converter = new FileToArrayList();
@@ -27,7 +30,7 @@ public class Controller {
                 ArrayList<Message> messagesObjcts = converter.setMessages(selectedFile.getAbsoluteFile());
                 pathText.setText(selectedFile.getAbsolutePath());
                 for (int i = 0; i < messagesObjcts.size(); i++) {
-                    mainTextFlow =  constructor.constructMain(messagesObjcts.get(i), mainTextFlow);
+                    mainTextFlow = constructor.constructMain(messagesObjcts.get(i), mainTextFlow);
                 }
             } catch (java.lang.Exception e) {
                 Alert alert = new Alert(Alert.AlertType.ERROR, "The file has incorrect format!", ButtonType.OK);
