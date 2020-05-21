@@ -10,6 +10,7 @@ import java.io.File;
 import java.util.ArrayList;
 
 public class Controller {
+    File prevPath = null;
     public Button selectFileButton;
     public Text pathText;
     public TextFlow mainTextFlow;
@@ -21,6 +22,7 @@ public class Controller {
      */
     public File onSelectFile(ActionEvent actionEvent) {
         FileChooser fc = new FileChooser();
+        fc.setInitialDirectory(prevPath);
         FileToArrayList converter = new FileToArrayList();
         File selectedFile = fc.showOpenDialog(null);
         MessageConstructor constructor = new MessageConstructor();
@@ -29,10 +31,12 @@ public class Controller {
             try {
                 ArrayList<Message> messagesObjcts = converter.setMessages(selectedFile.getAbsoluteFile());
                 pathText.setText(selectedFile.getAbsolutePath());
+                prevPath = selectedFile.getParentFile();
                 for (int i = 0; i < messagesObjcts.size(); i++) {
                     mainTextFlow = constructor.constructMain(messagesObjcts.get(i), mainTextFlow);
                 }
-            } catch (java.lang.Exception e) {
+            } catch (Exception e) {
+                System.out.println(e);
                 Alert alert = new Alert(Alert.AlertType.ERROR, "The file has incorrect format!", ButtonType.OK);
                 alert.show();
                 pathText.setText("");
