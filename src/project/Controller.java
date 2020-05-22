@@ -21,6 +21,7 @@ public class Controller {
      * @return null, the outcome of this method is in the GUI
      */
     public File onSelectFile(ActionEvent actionEvent) {
+        mainTextFlow.getChildren().clear();
         FileChooser fc = new FileChooser();
         fc.setInitialDirectory(prevPath);
         FileToArrayList converter = new FileToArrayList();
