@@ -40,9 +40,11 @@ public class MessageConstructor {
      * @param textFlow  with time and name added to it
      * @return textflow with time, nickname and text
      */
-    TextFlow constructText(Message msgConstr, TextFlow textFlow) {
-//        EmojiDecoder decoder = new EmojiDecoder();
-        textFlow.getChildren().add(new Text((":" + msgConstr.getText()) + "\n"));
+    TextFlow constructText(Message msgConstr, TextFlow textFlow) throws FileNotFoundException {
+        EmojiDecoder decoder = new EmojiDecoder();
+        textFlow.getChildren().add(new Text(":"));
+        textFlow = decoder.decodeEmojis(textFlow, msgConstr);
+        textFlow.getChildren().add(new Text("\n"));
         return textFlow;
     }
 
