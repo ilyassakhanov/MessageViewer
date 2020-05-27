@@ -20,6 +20,9 @@
          <content>
             <TextFlow fx:id="mainTextFlow" minHeight="-Infinity" minWidth="-Infinity" />
          </content>
+         <GridPane.margin>
+            <Insets right="7.0" />
+         </GridPane.margin>
       </ScrollPane>
    </children>
    <columnConstraints>
