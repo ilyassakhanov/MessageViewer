@@ -1,6 +1,7 @@
 package project;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 /**
  * A class that deals with connecting FileChooser output and message processing classes

@@ -7,6 +7,7 @@ import javafx.scene.text.TextFlow;
 import javafx.stage.FileChooser;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 
 public class Controller {
@@ -17,6 +18,7 @@ public class Controller {
 
     /**
      * A method that connects UI with message processing
+     *
      * @param actionEvent launches on click of a select file button
      * @return null, the outcome of this method is in the GUI
      */
@@ -35,6 +37,12 @@ public class Controller {
                 for (int i = 0; i < messagesObjcts.size(); i++) {
                     mainTextFlow = constructor.constructMain(messagesObjcts.get(i), mainTextFlow);
                 }
+            } catch (java.io.FileNotFoundException e) {
+                System.out.println(e);
+                Alert alert = new Alert(Alert.AlertType.ERROR, "The program couldn't locate the file!", ButtonType.OK);
+                alert.show();
+                pathText.setText("");
+                mainTextFlow = new TextFlow(new Text(""));
             } catch (java.lang.Exception e) {
                 Alert alert = new Alert(Alert.AlertType.ERROR, "The file has incorrect format!", ButtonType.OK);
                 alert.show();
